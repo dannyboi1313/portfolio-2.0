@@ -1,0 +1,262 @@
+
+.iconContainer{
+    position: relative;
+    transition: all ease .6s;
+    cursor: pointer;
+
+    transition: all ease .6s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    transition: all 0.3s ease;
+    position: relative; /* Add this */
+}
+.sideBar{
+    /* position: fixed;
+    top: 50%;
+    right: 0px;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: all 0.3s ease; Add this */
+}
+.border{
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: solid 2px #419EAD;
+}
+.label{
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+    font-size: small;
+    transform: translate(-50%,0%) scale(0); 
+    transition: all ease .6s;
+
+}
+
+.icon{
+    position: absolute;  
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    margin: auto;
+    transition: all ease .6s;
+}
+.iconMain{
+    z-index: 10;
+}
+.iconBg1{
+    z-index: 9;
+
+}
+.iconBg1Hide{
+    z-index: 9;
+
+}
+.iconBg2{
+    z-index: 8;
+}
+.iconBg3{
+    z-index: 7;
+}
+.iconContainer:hover .iconMain{
+    transform: translate(-50%,-50%) scale(1.1);
+}
+.iconContainer:hover .label{
+    transform: translate(-50%,100%) scale(1.1);
+}
+
+.iconContainer:hover .iconBg2{
+    animation: cardBg2 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+}
+.iconContainer:hover .iconBg2Narrow{
+    animation: cardBg2Narrow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+}
+
+.iconContainer:hover .iconBg3{
+    animation: cardBg3 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+
+.iconContainer:hover .iconBg3Narrow{
+    animation: cardBg3Narrow 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+
+.iconContainer:hover .iconBg1{
+    animation: cardBg1 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.iconContainer:not(:hover) .iconBg1 {
+    animation: cardBg1Reverse 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  
+  .iconContainer:hover .iconBg1Hide{
+    animation: cardBg1Hide 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.iconContainer:not(:hover) .iconBg1Hide {
+    animation: cardBg1HideReverse 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  
+.iconContainer:not(:hover) .iconBg2 {
+    animation: cardBg2Reverse 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  .iconContainer:not(:hover) .iconBg2Narrow {
+    animation: cardBg2NarrowReverse 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  
+  .iconContainer:not(:hover) .iconBg3 {
+    animation: cardBg3Reverse 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  .iconContainer:not(:hover) .iconBg3Narrow {
+    animation: cardBg3NarrowReverse 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  
+
+  @keyframes cardBg1 {
+    0% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-20px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(-25px) translateX(0) rotate(0deg);
+    }
+  }
+  @keyframes cardBg1Hide {
+    0% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-25px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(-30px) translateX(0) rotate(0deg);
+    }
+  }
+  @keyframes cardBg2 {
+    0% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-25px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(-25px) translateX(20px) rotate(20deg);
+    }
+  }
+  @keyframes cardBg2Narrow {
+    0% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-30px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(-30px) translateX(20px) rotate(20deg);
+    }
+  }
+  @keyframes cardBg3 {
+    0% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-25px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(-25px) translateX(-20px) rotate(-20deg);
+    }
+  }
+  @keyframes cardBg3Narrow {
+    0% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-30px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(-30px) translateX(-20px) rotate(-20deg);
+    }
+  }
+
+
+  @keyframes cardBg1Reverse {
+    0% {
+      transform: translate(-50%,-50%) translateY(-1rem) translateX(0rem) rotate(0deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-1rem) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg);
+    }
+  }
+  
+  
+  @keyframes cardBg1HideReverse {
+    0% {
+      transform: translate(-50%,-50%) translateY(-55px) translateX(0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-55px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(.5);
+    }
+  }
+  @keyframes cardBg2Reverse {
+    0% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(1.5rem) rotate(20deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+  }
+  
+  @keyframes cardBg2NarrowReverse {
+    0% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(20px) rotate(20deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+  }
+  
+  @keyframes cardBg3Reverse {
+    0% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(-40px) rotate(-20deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+  }
+    
+  @keyframes cardBg3NarrowReverse {
+    0% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(-20px) rotate(-20deg);
+    }
+    20% {
+      transform: translate(-50%,-50%) translateY(-40px) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%,-50%) translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+  }

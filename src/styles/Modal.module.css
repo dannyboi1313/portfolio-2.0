@@ -1,0 +1,192 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .cardPadding{
+  padding: 2rem 1rem 1rem 1rem;
+
+  }
+  .modalMargin{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+  
+  
+  .modalTags .tag{
+    background-color: #419EAD;
+    text-transform: lowercase;
+    color: white;
+    padding: .1rem .5rem;
+    border-radius: 1rem;
+    margin-left: 1rem;
+  }
+  .modalCard {
+    width: 75%;
+    height: 90%;
+    overflow-x: hidden;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    pointer-events: all;
+
+  }
+
+  .modalCard h1{
+    font-size: var(--font-large);
+  }
+  .modalCard h2{
+    font-size: var(--font-small);
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+  }
+  .modalCard h3{
+    color: var(--font-dark);
+    font-size: var(--font-normal);
+    font-weight: normal;
+  
+  }
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .modalContent{
+    width: 100%;
+    max-height: 100%;
+    overflow-x: hidden;
+
+    overflow-y: scroll;
+    scrollbar-color: red orange;
+    scrollbar-width: thin;
+  }
+  .modalFooter{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  .modalBar{
+    height: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #419EAD;
+  }
+  .modalBar button{
+    background-color: transparent;
+    border: none;
+    font-size: var(--font-large);
+    margin-right: .2rem;
+    color: white;
+    cursor: pointer;
+    transition: color ease .3s;
+  }
+  .modalBar button:hover{
+    color: var(--primary-color);
+  }
+  .modalImageContainer{
+  width: 100%;
+  height: 18rem;
+  background-color: var(--light-grey-color);
+  }
+  .modalImageCarousel{
+  max-width: 100%;
+  overflow-x: scroll;
+  }
+  .modalBody ul{
+  padding-left: 1rem;
+  }
+  .modalFooter button{
+    width: 10rem;
+    height: 2.5rem;
+    color: var(--secondary-color);
+    font-size: var(--font-normal);
+    background-color: transparent;
+    border: solid 2px var(--secondary-color);
+    border-radius: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color ease .3s;
+    
+  }
+  .modalFooter button:hover{
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  .modalTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+
+  }
+
+  /* Mobile */
+@media (max-width: 700px) {
+    .modalCard {
+        width: 95%;
+        height: 95%;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        pointer-events: all;
+    
+      }
+      .modalCard h1{
+        font-size: var(--font-normal);
+      }
+      .modalCard h2{
+        font-size: var(--font-xsmall);
+        text-transform: uppercase;
+        letter-spacing: 0.12rem;
+      }
+      .modalCard h3{
+        color: var(--font-dark);
+        font-size: var(--font-normal);
+        font-weight: normal;
+      
+      }
+      .modalCard p, .modalCard li{
+        font-size: var(--font-xsmall);
+      }
+ 
+      .modalBar{
+        height: 3rem;
+        display: flex;
+        flex-direction: row-reverse;
+        background-color: #419EAD;
+      }
+      .modalBar button{
+        background-color: transparent;
+        border: none;
+        font-size: var(--font-xlarge);
+        margin-right: .2rem;
+        color: white;
+        cursor: pointer;
+        transition: color ease .3s;
+      }
+      .modalMargin{
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+      }
+      .cardPadding{
+        padding: 1rem 1rem 1rem 1rem;
+      
+    }
+
+  }

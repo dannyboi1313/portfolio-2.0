@@ -1,11 +1,154 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import Logo from "public/logo.svg";
+import Accent from "public/accent.svg";
+import LandingImage from "public/landing-image.svg";
+import LandingImageDark from "public/landing-image-dark.svg";
 
-const inter = Inter({ subsets: ['latin'] })
+import LandingArrow from "public/arrow-landing.svg";
+import skills from "../../data/skills";
+
+import FolderIcon from "public/folder-icon.svg";
+import FolderIcon1 from "public/folder-icon-1.svg";
+import FolderIcon2 from "public/folder-icon-2.svg";
+import FolderIcon3 from "public/folder-icon-3.svg";
+import AboutIcon from "public/about-icon.svg";
+import AboutIcon2 from "public/about-icon-2.svg";
+import AboutIcon3 from "public/about-icon-3.svg";
+import ExperienceIcon from "public/experience-icon.svg";
+import ExperienceIcon1 from "public/experience-icon-1.svg";
+import ExperienceIcon2 from "public/experience-icon-2.svg";
+import ExperienceIcon3 from "public/experience-icon-3.svg";
+import ContactIcon from "public/contact-icon.svg";
+import ContactIcon1 from "public/contact-icon-1.svg";
+import ContactIcon2 from "public/contact-icon-2.svg";
+import ContactIcon3 from "public/contact-icon-3.svg";
+import Carousel from "@/components/carousel";
+import MovingSquareCanvas from "@/components/square3d";
+import JumpIcon from "@/components/jumpIcon";
+import MovingBlobBackground from "@/components/movingBlobBackground";
+import { useState, useEffect, useRef, Ref } from "react";
+import LandingButton from "@/components/landingButton";
+import JobCard from "@/components/jobCard";
+import SkillsBox from "@/components/skillsBox";
+import AboutCard from "@/components/aboutCarouselCard";
+import aboutCards from "../../data/about_cards";
+import GrainyBall from "@/components/grainyBall";
+import ContactForm from "@/components/contactForm";
 
 export default function Home() {
+  const [iconsVisible, setIconsVisible] = useState(false);
+  const [iconsAnimate, setIconsAnimate] = useState(false);
+  const [aboutCarouselPosition, setAboutCarouselPosition] = useState(1);
+  const [logger, setLogger] = useState("");
+  const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
+  const [menuDisplayed, setMenuDisplayed] = useState(false);
+  const targetRefs = useRef<Array<Element | null>>([]);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
+  const handleAboutCarouselClickRight = (num: number) => {
+    let newNum = aboutCarouselPosition + num;
+    if (newNum > 4) {
+      newNum = 1;
+    } else if (newNum < 1) {
+      newNum = 4;
+    }
+    setAboutCarouselPosition(newNum);
+  };
+  const getAboutCarouselPosition = () => {
+    switch (aboutCarouselPosition) {
+      case 1:
+        return "about-carousel-items";
+      case 2:
+        return "about-carousel-items about-carousel-position-2";
+      case 3:
+        return "about-carousel-items about-carousel-position-3";
+      case 4:
+        return "about-carousel-items about-carousel-position-4";
+
+      default:
+        break;
+    }
+  };
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 610) {
+      setIconsVisible(true);
+    } else {
+      setIconsVisible(false);
+    }
+    if (scrollY < 600) {
+      setIconsAnimate(false);
+    } else {
+      setIconsAnimate(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  function getIconClass() {
+    if (iconsVisible) {
+      return "icon-container-overlay";
+    } else if (iconsAnimate) {
+      return "icon-container-overlay";
+    }
+    return "icon-container";
+  }
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5, // Change this threshold value as needed
+    };
+
+    const handleIntersection: IntersectionObserverCallback = (
+      entries,
+      observer
+    ) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible((prevVisible) => ({
+            ...prevVisible,
+            [entry.target.id]: true,
+          }));
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, options);
+
+    targetRefs.current.forEach((target) => {
+      if (target) {
+        observer.observe(target);
+      }
+    });
+
+    return () => {
+      targetRefs.current.forEach((target) => {
+        if (target) {
+          observer.unobserve(target);
+        }
+      });
+    };
+  }, []);
+
+  const addTargetRef = (ref: Element | null) => {
+    if (ref && !targetRefs.current.includes(ref)) {
+      targetRefs.current.push(ref);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -14,101 +157,552 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
+
+      <main className={`main ${darkMode ? "dark-mode" : ""}`}>
+        <div className="navbar p-1 flex-row space-between font-normal">
+          <Image src={Logo} alt="logo" height={60} />
+          <div className="link-container ps-4 flex-row items-center space-between ">
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#projects">Experience</a>
+            <a href="#projects">Contact</a>
+          </div>
           <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            </button>
+          </div>
+        </div>
+        <div className="w-100 landing-wrapper">
+          <div className="landing-image-mobile">
+            <div className="accent-marks-mobile landing-spacing flex-row items-center ">
+              <div className="filter-1">
+                <Image src={Accent} height={80} alt="Illustration" />
+              </div>
+              <div className="ml-2 filter-2">
+                <Image src={Accent} height={80} alt="Illustration" />
+              </div>
+              <div className="ml-2  filter 3">
+                <Image src={Accent} height={80} alt="Illustration" />
+              </div>
+              <div className="ml-2">
+                <Image src={Accent} height={80} alt="Illustration" />
+              </div>
+            </div>
+            {darkMode ? (
               <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
+                src={LandingImageDark}
+                alt="Illustration"
+                fill={true}
+                className="image"
+              />
+            ) : (
+              <Image
+                src={LandingImage}
+                alt="Illustration"
+                fill={true}
+                className="image"
+              />
+            )}
+          </div>
+          <div className="landing-image">
+            {darkMode ? (
+              <Image
+                src={LandingImageDark}
+                alt="Illustration"
+                fill={true}
+                className="image"
+              />
+            ) : (
+              <Image
+                src={LandingImage}
+                alt="Illustration"
+                fill={true}
+                className="image"
+              />
+            )}
+          </div>
+          <div id="landing" className="landing-page">
+            <div className="landing-banner">
+              <div className="accent-marks landing-spacing flex-row items-center ">
+                <div className="filter-1">
+                  <Image src={Accent} height={80} alt="Illustration" />
+                </div>
+                <div className="ml-2 filter-2">
+                  <Image src={Accent} height={80} alt="Illustration" />
+                </div>
+                <div className="ml-2  filter 3">
+                  <Image src={Accent} height={80} alt="Illustration" />
+                </div>
+                <div className="ml-2">
+                  <Image src={Accent} height={80} alt="Illustration" />
+                </div>
+              </div>
+              <div className="flex-col landing-left items-center  ">
+                <div className="landing-spacing landing-left-content relative">
+                  <div className="relative">
+                    <h2>Hello I'm Daniel,</h2>
+                    <h1 className="font-xxlarge">
+                      Software Engineer,
+                      <br /> CS Student, and <br /> Problem Solver
+                    </h1>
+                  </div>
+                  <div className="flex-row flex-bottom">
+                    <LandingButton />
+                    <div className="arrow">
+                      <Image
+                        src={LandingArrow}
+                        alt="s"
+                        fill={true}
+                        className="image"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="jump-wrapper">
+            <div
+              className={`w-100 jump-container ${
+                iconsAnimate ? "jump-container-hide" : ""
+              }`}
+            >
+              <div className="ps-4 w-50">
+                <p>or jump to..</p>
+                <hr></hr>
+                <div className={`${getIconClass()}`}>
+                  <div className="ic">
+                    <a href="#projects">
+                      <JumpIcon
+                        icon={FolderIcon}
+                        bg_1={FolderIcon1}
+                        bg_2={FolderIcon2}
+                        bg_3={FolderIcon3}
+                        size={20}
+                        scale={0.8}
+                        showBg_1={true}
+                        label={"Projects"}
+                        sideBar={!iconsVisible}
+                      />
+                    </a>
+                  </div>
+                  <div className="ic">
+                    <a href="#about">
+                      <JumpIcon
+                        icon={AboutIcon}
+                        bg_1={null}
+                        bg_2={AboutIcon2}
+                        bg_3={AboutIcon3}
+                        size={20}
+                        scale={0.95}
+                        showBg_1={false}
+                        label={"About"}
+                        sideBar={!iconsVisible}
+                      />
+                    </a>
+                  </div>
+                  <div className="ic">
+                    <a href="#experience">
+                      <JumpIcon
+                        icon={ExperienceIcon}
+                        bg_1={ExperienceIcon1}
+                        bg_2={ExperienceIcon2}
+                        bg_3={ExperienceIcon3}
+                        size={20}
+                        scale={1}
+                        showBg_1={false}
+                        label={"Experience"}
+                        sideBar={!iconsVisible}
+                      />
+                    </a>
+                  </div>
+                  <div className="ic">
+                    <a href="#projects">
+                      <JumpIcon
+                        icon={ContactIcon}
+                        bg_1={ContactIcon1}
+                        bg_2={ContactIcon2}
+                        bg_3={ContactIcon3}
+                        size={20}
+                        scale={1}
+                        showBg_1={false}
+                        label={"Contact"}
+                        sideBar={!iconsVisible}
+                      />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${"icon-container-overlay-fixed"} ${
+            !iconsVisible && "icon-hide"
+          }`}
+        >
+          <div className="ic">
+            <a href="#projects">
+              <JumpIcon
+                icon={FolderIcon}
+                bg_1={FolderIcon1}
+                bg_2={FolderIcon2}
+                bg_3={FolderIcon3}
+                size={20}
+                scale={0.8}
+                showBg_1={true}
+                label={"Projects"}
+                sideBar={!iconsVisible}
+              />
+            </a>
+          </div>
+          <div className="ic">
+            <a href="#about">
+              <JumpIcon
+                icon={AboutIcon}
+                bg_1={null}
+                bg_2={AboutIcon2}
+                bg_3={AboutIcon3}
+                size={20}
+                scale={0.95}
+                showBg_1={false}
+                label={"About"}
+                sideBar={!iconsVisible}
+              />
+            </a>
+          </div>
+          <div className="ic">
+            <a href="#experience">
+              <JumpIcon
+                icon={ExperienceIcon}
+                bg_1={ExperienceIcon1}
+                bg_2={ExperienceIcon2}
+                bg_3={ExperienceIcon3}
+                size={20}
+                scale={1}
+                showBg_1={false}
+                label={"Experience"}
+                sideBar={!iconsVisible}
+              />
+            </a>
+          </div>
+          <div className="ic">
+            <a href="#projects">
+              <JumpIcon
+                icon={ContactIcon}
+                bg_1={ContactIcon1}
+                bg_2={ContactIcon2}
+                bg_3={ContactIcon3}
+                size={20}
+                scale={1}
+                showBg_1={false}
+                label={"Contact"}
+                sideBar={!iconsVisible}
               />
             </a>
           </div>
         </div>
+        <div className="w-100  ">
+          <div className="project-wrapper pr-icons " id="projects">
+            <GrainyBall display="grainy-ball-1" blue={false} />
+            <div className=" carousel-wrapper">
+              <Carousel addTargetRef={addTargetRef} isVisible={isVisible} />
+            </div>
+            <div className="side-col">
+              <h3
+                ref={addTargetRef}
+                id="id-1"
+                className={
+                  isVisible["id-1"] ? "content-animation" : "before-animation"
+                }
+              >
+                Projects
+              </h3>
+              <h4>These are a few of the projects I have worked on</h4>
+            </div>
+          </div>
+        </div>
+        <div className="w-100 pt-8 relative" id="about">
+          <GrainyBall display="grainy-ball-2" blue={true} />
+          <div className="about-accent-2"></div>
+          <div className="about-section left-padding">
+            <div className="flex-col content-center front">
+              <h3>About</h3>
+              <div className="flex-col p-2">
+                <h2>
+                  Daniel Blanchard
+                  <br />
+                  Software Engineer
+                </h2>
+                <p>South Jordan, UT</p>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
+                <div className="about-carousel-buttons section-spacing">
+                  <button
+                    onClick={() => {
+                      handleAboutCarouselClickRight(-1);
+                    }}
+                    className="about-carousel-button left"
+                  >
+                    <img src="/small-icons/arrow-left.svg" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      handleAboutCarouselClickRight(1);
+                    }}
+                    className="about-carousel-button right"
+                  >
+                    <img src="/small-icons/arrow-right.svg" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="about-carousel front">
+              <div className="about-accent">
+                <img src="/accents/dot-grid-accent.svg" />
+              </div>
+              <div className={`${getAboutCarouselPosition()}`}>
+                {" "}
+                <AboutCard
+                  title={aboutCards.card1.title}
+                  paragraph={aboutCards.card1.description}
+                  icon={aboutCards.card1.icon}
+                  color={aboutCards.card1.color}
+                  darkMode={darkMode}
+                />
+                <AboutCard
+                  title={aboutCards.card2.title}
+                  paragraph={aboutCards.card2.description}
+                  icon={aboutCards.card2.icon}
+                  color={aboutCards.card2.color}
+                  darkMode={darkMode}
+                />
+                <AboutCard
+                  title={aboutCards.card3.title}
+                  paragraph={aboutCards.card3.description}
+                  icon={aboutCards.card3.icon}
+                  color={aboutCards.card3.color}
+                  darkMode={darkMode}
+                />
+                <AboutCard
+                  title={aboutCards.card4.title}
+                  paragraph={aboutCards.card4.description}
+                  icon={aboutCards.card4.icon}
+                  color={aboutCards.card4.color}
+                  darkMode={darkMode}
+                />
+              </div>
+            </div>
+            <div className="about-carousel-buttons-mobile">
+              <button
+                onClick={() => {
+                  handleAboutCarouselClickRight(-1);
+                }}
+                className="about-carousel-button left"
+              >
+                <img src="/small-icons/arrow-left.svg" />
+              </button>
+              <button
+                onClick={() => {
+                  handleAboutCarouselClickRight(1);
+                }}
+                className="about-carousel-button right"
+              >
+                <img src="/small-icons/arrow-right.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="w-100 section-spacing flex-col" id="experience">
+          <div className="flex-row space-between">
+            <GrainyBall display="grainy-ball-3" blue={false} />
+            <div className="experience-wrapper job-table">
+              <div className="divider bg-light landing-spacing"></div>
+              <div
+                ref={addTargetRef}
+                id="target-element-2"
+                className={
+                  isVisible["target-element-2"]
+                    ? "content-animation divider mt-small content-center"
+                    : "before-animation divider mt-small content-center"
+                }
+              >
+                <p>
+                  <em>(Click to learn more)</em>
+                </p>
+              </div>
+              <div className="job-table">
+                <div className="job-container">
+                  <div
+                    ref={addTargetRef}
+                    id="job1"
+                    className={
+                      isVisible["job1"]
+                        ? "job-row content-animation"
+                        : "job-row before-animation"
+                    }
+                  >
+                    <JobCard
+                      company="Expedia"
+                      icon={"/logos/expedia-logo.svg"}
+                      selected={false}
+                      position="position-1"
+                    />
+                    <JobCard
+                      company="Expedia"
+                      icon={"/logos/l3-logo.svg"}
+                      selected={false}
+                      position="position-2"
+                    />
+                    <JobCard
+                      company="Expedia"
+                      icon={"/logos/nova-logo.svg"}
+                      selected={false}
+                      position="position-3"
+                    />
+                  </div>
+                  <div
+                    ref={addTargetRef}
+                    id="job2"
+                    className={
+                      isVisible["job2"]
+                        ? "job-row content-animation"
+                        : "job-row before-animation"
+                    }
+                  >
+                    <JobCard
+                      company="Expedia"
+                      icon={"/logos/micron-logo.svg"}
+                      selected={false}
+                      position="position-4"
+                    />
+                    <JobCard
+                      company="Expedia"
+                      icon={"/logos/byu-logo.svg"}
+                      selected={false}
+                      position="position-5"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="divider bg-light landing-spacing"></div>
+            </div>
+            <div className="side-col">
+              <h3>Experience</h3>
+              <h4>
+                Here is a descpritons of some of the places I have worked and
+                blah blah
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div className="skill-container w-100">
+          <div className="skill-accent"></div>
+          <div className="skills-wrapper">
+            <SkillsBox
+              title="Languages"
+              skills={skills.languages}
+              isTwoCol={false}
+              addTargetRef={addTargetRef}
+              isVisible={isVisible}
+              darkMode={darkMode}
+            />
+            <SkillsBox
+              title="Technologies"
+              skills={skills.technologies}
+              isTwoCol={true}
+              addTargetRef={addTargetRef}
+              isVisible={isVisible}
+              darkMode={darkMode}
+            />
+            <SkillsBox
+              title="Other"
+              skills={skills.other}
+              isTwoCol={false}
+              addTargetRef={addTargetRef}
+              isVisible={isVisible}
+              darkMode={darkMode}
+            />
+          </div>
         </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
+        <div className="w-100 section-spacing  relative " id="contact">
+          <div className="contact-page-accent"></div>
 
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
+            ref={addTargetRef}
+            id="contact-element"
+            className={`contact-wrapper flex-col items-center content-center 
+              ${
+                isVisible["contact-element"]
+                  ? "content-animation"
+                  : "before-animation"
+              }`}
           >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
+            <div
+              className={`contact-display ${
+                darkMode ? "dark-mode-card-bg " : "light-mode-card-bg "
+              }`}
+            >
+              <div className="contact-card-wrapper">
+                <div className="contact-card  ">
+                  <div className="contact-card-extra">
+                    <div className="contact-content space-between">
+                      <div>
+                        <h2>Hire Me!</h2>
+                        <p className="mt-small font-small">
+                          Feel free to to contact me any time, through any
+                          method below or fill out the form
+                        </p>
 
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
+                        <div className="flex-row mt-1">
+                          <Image
+                            src={"../small-icons/phone-icon.svg"}
+                            height={20}
+                            width={20}
+                            alt="icon"
+                          />
+                          <p>801-232-3445</p>
+                        </div>
+                        <div className="flex-row mt-1">
+                          <Image
+                            src={"../small-icons/email-icon.svg"}
+                            height={20}
+                            width={20}
+                            alt="icon"
+                          />
+                          <p>daniel.s.blanchard97@gmail.com</p>
+                        </div>
+                      </div>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+                      <div className="flex-row card-icons">
+                        <Image
+                          src={"../small-icons/git-icon.svg"}
+                          height={40}
+                          width={40}
+                          alt="icon"
+                        />
+                        <Image
+                          src={"../small-icons/linked-icon.svg"}
+                          height={40}
+                          width={40}
+                          alt="icon"
+                        />
+                      </div>
+                      <div className="contact-accent"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="contact-form-wrapper">
+                <div className="contact-form-container">
+                  <ContactForm darkMode={darkMode} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </>
-  )
+  );
 }

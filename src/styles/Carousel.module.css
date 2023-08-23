@@ -1,0 +1,301 @@
+.carouselContainer{
+    background: none;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+.carousel{
+    position: relative;
+    height: 40rem;
+    width: 100%;
+}
+.cardContainer{
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: all;
+    transition: all ease .6s;
+    width: 25rem;
+    height: 20rem;
+    max-width: 90%;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.buttonWrapper{
+    display: none;
+}
+
+
+  .button{
+    height:4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: none;
+pointer-events: all;
+    cursor: pointer;
+  }
+.button.right:hover{
+    background-color: var(--primary-color-transparent);
+}
+.button.left:hover{
+    background-color:darkgrey;
+}
+.button:focus{
+    background-color: green;
+}
+  .button img{
+    max-width: 50%;
+  }
+  .left{
+    background-color: var(--light-grey-color);
+  }
+  .right{
+    background-color: var(--primary-color);
+  }
+
+
+.selectedCard{
+    z-index: 25;
+}
+.front{
+    z-index: 25;
+}
+.backLeft{
+    cursor: pointer;
+    transform: translateY(-50%) translate(-15rem,-12rem) scale(.3) ;
+    z-index: 20;
+}
+.backRight{
+    cursor: pointer;
+    z-index: 20;
+    transform:translateY(-50%) translate(15rem,-12rem) scale(.3) ;
+}
+.middleLeft{
+    cursor: pointer;
+    transform:translateY(-50%) translate(-20rem,-2rem)scale(.5) ;
+    z-index: 22;
+
+}
+.middleRight{
+    cursor: pointer;
+    transform: translateY(-50%) translate(20rem,-2rem)scale(.5) ;
+    z-index: 22;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    .card0Animation {
+      animation: card0Enter 2s 1;
+    }
+    .card1Animation {
+        animation: card1Enter 2s 1;
+      }
+    .card2Animation {
+        animation: card2Enter 2s 1;
+      }
+  .card3Animation {
+        animation: card3Enter 2s 1;
+      }
+  .card4Animation {
+        animation: card4Enter 2s 1;
+      }
+
+  }
+  @keyframes card0Enter {
+    0% {
+        transform:  translateY(-50%) translate(-20rem,-2rem) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(.5rem,0rem) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+      }
+  }
+  @keyframes card1Enter {
+    0% {
+        transform:   translateY(-50%) scale(1);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(20.5rem,-2.1rem)scale(.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) translate(20rem,-2rem)scale(.5);
+        opacity: 1;
+      }
+ }
+ @keyframes card2Enter {
+    0% {
+        transform:  translateY(-50%) translate(20rem,-2rem)scale(.5);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%)translate(14.5rem,-12rem) scale(.3);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%)translate(15rem,-12rem) scale(.3);
+        opacity: 1;
+      }
+  }
+  @keyframes card3Enter {
+    0% {
+        transform:   translateY(-50%)translate(15rem,-12rem) scale(.3);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(-15.5rem,-12rem)scale(.3);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) translate(-15rem,-12rem)scale(.3);
+        opacity: 1;
+      }
+  }
+  @keyframes card4Enter {
+
+      0% {
+        transform:  translateY(-50%) translate(-15rem,-12rem)scale(.3);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(-19.5rem,-2.1rem)scale(.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) translate(-20rem,-2rem)scale(.5);
+        opacity: 1;
+      }
+  }  
+  .beforeAnimation{
+    opacity: 0;
+  }
+
+
+
+  /* Tablet and Smaller Desktop */
+@media (max-width: 700px) {
+    .carousel{
+        position: relative;
+        height: 35rem;
+        max-height:70vh;
+        width: 100%;
+    }
+    .buttonWrapper{
+        display: flex;
+        position: relative;
+        width: 100%;
+        justify-content: center;
+        padding-bottom: 2rem;
+        
+    }
+
+    .cardContainer{
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: all;
+        transition: all ease .6s;
+        width: 80%;
+        height: 20rem;
+        max-width: 90%;
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    
+    }
+    
+.backLeft{
+    cursor: pointer;
+    transform: translateY(-50%) translate(-10rem,-12rem) scale(.3) ;
+    z-index: 20;
+}
+.backRight{
+    cursor: pointer;
+    z-index: 20;
+    transform:translateY(-50%) translate(10rem,-12rem) scale(.3) ;
+}
+.middleLeft{
+    cursor: pointer;
+    transform:translateY(-50%) translate(-15rem,-2rem)scale(.5) ;
+    z-index: 22;
+
+}
+.middleRight{
+    cursor: pointer;
+    transform: translateY(-50%) translate(15rem,-2rem)scale(.5) ;
+    z-index: 22;
+}
+@keyframes card1Enter {
+    0% {
+        transform:   translateY(-50%) scale(1);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(15.5rem,-2.1rem)scale(.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) translate(15rem,-2rem)scale(.5);
+        opacity: 1;
+      }
+ }
+ @keyframes card2Enter {
+    0% {
+        transform:  translateY(-50%) translate(15rem,-2rem)scale(.5);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%)translate(10.5rem,-12rem) scale(.3);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%)translate(10rem,-12rem) scale(.3);
+        opacity: 1;
+      }
+  }
+  @keyframes card3Enter {
+    0% {
+        transform:   translateY(-50%)translate(10rem,-12rem) scale(.3);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(-10.5rem,-12rem)scale(.3);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) translate(-10rem,-12rem)scale(.3);
+        opacity: 1;
+      }
+  }
+  @keyframes card4Enter {
+
+      0% {
+        transform:  translateY(-50%) translate(-10rem,-12rem)scale(.3);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(-50%) translate(-15.5rem,-2.1rem)scale(.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-50%) translate(-15rem,-2rem)scale(.5);
+        opacity: 1;
+      }
+  }  
+}
