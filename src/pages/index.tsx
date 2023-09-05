@@ -26,7 +26,6 @@ import ContactIcon3 from "public/contact-icon-3.svg";
 import Carousel from "@/components/carousel";
 import MovingSquareCanvas from "@/components/square3d";
 import JumpIcon from "@/components/jumpIcon";
-import MovingBlobBackground from "@/components/movingBlobBackground";
 import { useState, useEffect, useRef, Ref } from "react";
 import LandingButton from "@/components/landingButton";
 import JobCard from "@/components/jobCard";

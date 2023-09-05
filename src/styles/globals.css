@@ -484,8 +484,7 @@ h4 {
 .no-wrap {
   white-space: nowrap;
 }
-.accent-marks {
-}
+
 .accent-marks:nth-child(1) {
   color: yellow;
 }
