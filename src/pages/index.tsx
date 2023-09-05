@@ -636,7 +636,7 @@ export default function Home() {
                   <h4>Some of my prior experience</h4>
                   <p>And the skills I have developed along the way</p>
                   <a
-                    href="/danielblanchardresume-9-23.pdf"
+                    href="/DanielBlanchardResume-9-23.pdf"
                     target="_blank"
                     className="resume-button flex-row"
                   >

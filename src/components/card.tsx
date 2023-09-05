@@ -55,13 +55,7 @@ const Card: React.FC<CardProps> = ({ project, selected, darkMode }) => {
         </div>
         <div className={styles.thumbnailWrapper}>
           <div className={styles.thumbnail}>
-            <Image
-              src={project.thumbnail}
-              alt="a"
-              loading="eager"
-              fill={true}
-              className={styles.image}
-            />
+            <img src={project.thumbnail} alt="a" className={styles.image} />
           </div>
         </div>
         <div className={styles.tagWrapper}>

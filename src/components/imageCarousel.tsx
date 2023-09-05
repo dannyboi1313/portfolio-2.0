@@ -90,9 +90,8 @@ const ImageCarousel: React.FC<AboutCardProps> = ({
                 } ${styles.marginLeft} ${styles.max100}`}
               >
                 <div className={styles.carouselImage}>
-                  <Image
+                  <img
                     src={image}
-                    fill={true}
                     alt="image"
                     className={mobile ? styles.imageMobile : styles.image}
                   />
