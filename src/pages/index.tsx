@@ -300,7 +300,7 @@ export default function Home() {
                 <div className="flex-col landing-left items-center  ">
                   <div className="landing-spacing landing-left-content">
                     <div className="">
-                      <h2>Hello I'm Daniel,</h2>
+                      <h2>Hello I&apos;m Daniel,</h2>
                       <h1 className="font-xxlarge">
                         Software Engineer,
                         <br /> CS Student, and <br /> Problem Solver
