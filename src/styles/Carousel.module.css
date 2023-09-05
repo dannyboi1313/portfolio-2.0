@@ -47,6 +47,8 @@
   background: rgba(243, 172, 0, 0.7);
 }
 .cardContainer {
+  will-change: transform, scale;
+
   position: absolute;
   margin: auto;
   left: 0;
@@ -107,21 +109,29 @@
 
 .backLeft {
   cursor: pointer;
+  will-change: transform, scale;
+
   transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
   z-index: 20;
 }
 .middleLeft {
   cursor: pointer;
+  will-change: transform, scale;
+
   transform: translateY(-50%) translate(-24rem, 0rem) scale(0.46);
   z-index: 29;
 }
 .backRight {
   cursor: pointer;
   z-index: 29;
+  will-change: transform, scale;
+
   transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
 }
 .middleRight {
   cursor: pointer;
+  will-change: transform, scale;
+
   transform: translateY(-50%) translate(24rem, 0rem) scale(0.45);
 
   z-index: 29;
@@ -129,19 +139,19 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .card0Animation {
-    animation: card0Enter 3s 1;
+    animation: card0Enter 1s 1;
   }
   .card1Animation {
-    animation: card1Enter 4s 1;
+    animation: card1Enter 1.25s 1;
   }
   .card2Animation {
-    animation: card2Enter 5s 1;
+    animation: card2Enter 1.5s 1;
   }
   .card3Animation {
-    animation: card3Enter 6s 1;
+    animation: card3Enter 2s 1;
   }
   .card4Animation {
-    animation: card4Enter 2s 1;
+    animation: card4Enter 0.75s 1;
   }
 }
 @keyframes card0Enter {
