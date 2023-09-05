@@ -45,18 +45,24 @@ const SkillsBox: React.FC<SkillsProps> = ({
               <div className={styles.twoCols}>
                 <div className={styles.col}>
                   {skills.map((val, index) => {
-                    return index % 2 == 0 && <p id="index">{val}</p>;
+                    return (
+                      index % 2 == 0 && (
+                        <p key={index} id="index">
+                          {val}
+                        </p>
+                      )
+                    );
                   })}
                 </div>
                 <div className={styles.col}>
                   {skills.map((val, index) => {
-                    return index % 2 != 0 && <p>{val}</p>;
+                    return index % 2 != 0 && <p key={index}>{val}</p>;
                   })}
                 </div>
               </div>
             ) : (
-              skills.map((val) => {
-                return <p>{val}</p>;
+              skills.map((val, index) => {
+                return <p key={index}>{val}</p>;
               })
             )}
           </div>

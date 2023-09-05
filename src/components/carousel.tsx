@@ -13,6 +13,7 @@ import {
 interface SkillsProps {
   addTargetRef: (ref: Element | null) => void;
   isVisible: { [key: string]: boolean };
+  darkMode: boolean;
 }
 export enum carouselPositions {
   front = "front",
@@ -22,7 +23,11 @@ export enum carouselPositions {
   middleRight = "middleRight",
 }
 
-const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
+const Carousel: React.FC<SkillsProps> = ({
+  addTargetRef,
+  isVisible,
+  darkMode,
+}) => {
   useEffect(() => {
     // Add the target div ref when the component mounts
     addTargetRef(document.getElementById("card0"));
@@ -39,6 +44,7 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
     carouselPositions.backLeft,
     carouselPositions.middleLeft,
   ]);
+
   const getPosition = (card: number) => {
     const currPosition = positions[card];
     switch (currPosition) {
@@ -64,12 +70,18 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
       handleCardClick(focusedCard - 1);
     }
   };
-  const handleRightClick = () => {
+
+  const moveRight = () => {
+    // Replace this with your actual function code
     if (focusedCard == 4) {
       handleCardClick(0);
     } else {
       handleCardClick(focusedCard + 1);
     }
+  };
+
+  const handleRightClick = () => {
+    moveRight();
   };
   const handleCardClick = (cardId: number) => {
     setFocusedCard(cardId);
@@ -129,23 +141,48 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
     <>
       <div className={styles.carouselContainer}>
         <div className="w-100 flex-row content-center">
-          <div className="divider bg-dark"></div>
+          <div className={styles.divider}></div>
         </div>
 
         <div className={styles.carousel}>
+          <div
+            className={`${styles.mobileNo} "w-100 flex-row content-center "`}
+          >
+            <p>
+              <em>(Click on the cards to cycle through)</em>
+            </p>
+          </div>
+
+          <div className={styles.dash}>
+            <div
+              className={`${styles.dashTop} ${
+                darkMode ? styles.daskBDark : styles.daskBLight
+              } `}
+            ></div>
+            <div
+              className={`${styles.dashBottom}${
+                darkMode ? styles.daskBDark : styles.daskBLight
+              } `}
+            ></div>
+          </div>
           <div
             ref={addTargetRef}
             id="card-0"
             className={`${styles.cardContainer} ${getPosition(0)} ${
               focusedCard == 0 && styles.selectedCard
             } ${
-              isVisible["card-2"]
+              isVisible["card-0"]
                 ? styles.card0Animation
                 : styles.beforeAnimation
             }`}
             onClick={() => handleCardClick(0)}
           >
-            <Card project={project1} selected={focusedCard == 0} />
+            <Card
+              key={0}
+              project={project1}
+              selected={focusedCard == 0}
+              darkMode={darkMode}
+            />
           </div>
           <div
             ref={addTargetRef}
@@ -153,27 +190,37 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
             className={`${styles.cardContainer} ${getPosition(1)} ${
               focusedCard == 1 && styles.selectedCard
             } ${
-              isVisible["card-2"]
+              isVisible["card-0"]
                 ? styles.card1Animation
                 : styles.beforeAnimation
             }`}
             onClick={() => handleCardClick(1)}
           >
-            <Card project={project2} selected={focusedCard == 1} />
+            <Card
+              key={1}
+              project={project2}
+              selected={focusedCard == 1}
+              darkMode={darkMode}
+            />
           </div>
           <div
             ref={addTargetRef}
-            id="card-2"
+            id="card-0"
             className={`${styles.cardContainer} ${getPosition(2)} ${
               focusedCard == 2 && styles.selectedCard
             } ${
-              isVisible["card-2"]
+              isVisible["card-0"]
                 ? styles.card2Animation
                 : styles.beforeAnimation
             }`}
             onClick={() => handleCardClick(2)}
           >
-            <Card project={project3} selected={focusedCard == 2} />
+            <Card
+              key={3}
+              project={project3}
+              selected={focusedCard == 2}
+              darkMode={darkMode}
+            />
           </div>
           <div
             ref={addTargetRef}
@@ -181,13 +228,18 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
             className={`${styles.cardContainer} ${getPosition(3)} ${
               focusedCard == 3 && styles.selectedCard
             } ${
-              isVisible["card-2"]
+              isVisible["card-0"]
                 ? styles.card3Animation
                 : styles.beforeAnimation
             }`}
             onClick={() => handleCardClick(3)}
           >
-            <Card project={project4} selected={focusedCard == 3} />
+            <Card
+              key={4}
+              project={project4}
+              selected={focusedCard == 3}
+              darkMode={darkMode}
+            />
           </div>
           <div
             ref={addTargetRef}
@@ -195,13 +247,18 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
             className={`${styles.cardContainer} ${getPosition(4)} ${
               focusedCard == 4 && styles.selectedCard
             } ${
-              isVisible["card-2"]
+              isVisible["card-0"]
                 ? styles.card4Animation
                 : styles.beforeAnimation
             }`}
             onClick={() => handleCardClick(4)}
           >
-            <Card project={project5} selected={focusedCard == 4} />
+            <Card
+              key={5}
+              project={project5}
+              selected={focusedCard == 4}
+              darkMode={darkMode}
+            />
           </div>
         </div>
         <div className={styles.buttonWrapper}>
@@ -211,7 +268,7 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
               handleLeftClick();
             }}
           >
-            Left
+            <img src="/small-icons/arrow-right.svg" />
           </button>
           <button
             className={`${styles.button} ${styles.right}`}
@@ -219,11 +276,11 @@ const Carousel: React.FC<SkillsProps> = ({ addTargetRef, isVisible }) => {
               handleRightClick();
             }}
           >
-            Right
+            <img src="/small-icons/arrow-right.svg" />
           </button>
         </div>
         <div className="w-100 flex-row content-center">
-          <div className="divider bg-dark"></div>
+          <div className={styles.divider}></div>
         </div>
       </div>
     </>

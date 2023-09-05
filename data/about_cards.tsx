@@ -2,15 +2,15 @@ const aboutCards = {
   card1: {
     id: 1,
     icon: "/small-icons/grad-icon.svg",
-    title: "Computer Science Senior",
+    title: "CS Student",
     color: "#8E00CB",
     description:
-      "I am currently a Senior at Brigham Young University in Provo, Utah, pursuing a degree in computer science.",
+      "I am currently a Senior at Brigham Young University in Provo, Utah, pursuing a degree in Computer Science. I am set to graduate in December 2023.",
   },
   card2: {
     id: 2,
-    icon: "/small-icons/grad-icon.svg",
-    title: "Hard Working engineer",
+    icon: "/small-icons/about-problem.svg",
+    title: "Problem Solving",
     color: "#E4B459",
 
     description:
@@ -18,7 +18,7 @@ const aboutCards = {
   },
   card3: {
     id: 3,
-    icon: "/small-icons/grad-icon.svg",
+    icon: "/small-icons/about-learn.svg",
     title: "Lifelong Learner",
     color: "#F04768",
 
@@ -27,8 +27,8 @@ const aboutCards = {
   },
   card4: {
     id: 4,
-    icon: "/small-icons/grad-icon.svg",
-    title: "The great outdoors",
+    icon: "/small-icons/about-nature.svg",
+    title: "Outdoor Enthusiast",
     color: "#419EAD",
     description:
       "When I am not coding,you will find me spending time outdoors either hiking, camping, or playing soccer.",

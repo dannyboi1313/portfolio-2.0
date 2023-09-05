@@ -11,11 +11,11 @@ const MovingSquareCanvas: React.FC = () => {
   let mouseY = 0;
   let squareX = 0;
   let squareY = 0;
-  const squareHeight = 500;
-  const squareWidth = 800;
+  const squareHeight = 550;
+  const squareWidth = 650;
 
-  const maxOffsetY = 10;
-  const maxOffsetX = 20;
+  const maxOffsetY = 40;
+  const maxOffsetX = 40;
   const maxX = canvasWidth / 2 + maxOffsetX;
   const minX = canvasWidth / 2 - maxOffsetX;
   const maxY = canvasHeight / 2 + maxOffsetY;
@@ -100,6 +100,34 @@ const MovingSquareCanvas: React.FC = () => {
         ctx.fill();
       }
     }
+    // Top right corner
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < 5; j++) {
+        ctx.beginPath();
+        ctx.arc(
+          squareX + squareWidth / 2 - j * 20,
+          squareY - squareHeight / 2 + i * 20,
+          dotRadius,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+    }
+    // Top right corner
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 2; j++) {
+        ctx.beginPath();
+        ctx.arc(
+          squareX + squareWidth / 2 - j * 20,
+          squareY - squareHeight / 2 + i * 20,
+          dotRadius,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+    }
 
     // Bottom right corner
     for (let i = 0; i < 2; i++) {
@@ -122,6 +150,36 @@ const MovingSquareCanvas: React.FC = () => {
         ctx.beginPath();
         ctx.arc(
           squareX + squareWidth / 2 - j * 20,
+          squareY + squareHeight / 2 - i * 20,
+          dotRadius,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+    }
+
+    // Bottom right corner
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < 5; j++) {
+        ctx.beginPath();
+        ctx.arc(
+          squareX - squareWidth / 2 + j * 20,
+          squareY + squareHeight / 2 - i * 20,
+          dotRadius,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+      }
+    }
+
+    // Bottom right corner
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 2; j++) {
+        ctx.beginPath();
+        ctx.arc(
+          squareX - squareWidth / 2 + j * 20,
           squareY + squareHeight / 2 - i * 20,
           dotRadius,
           0,

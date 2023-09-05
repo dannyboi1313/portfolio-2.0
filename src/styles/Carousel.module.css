@@ -1,19 +1,256 @@
-.carouselContainer{
-    background: none;
-    pointer-events: none;
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.carouselContainer {
+  position: relative;
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.carousel {
+  position: relative;
+  height: 24rem;
+  width: 100%;
+}
+.dash {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(-50%);
+  z-index: 28;
+  width: 120%;
+  height: 12rem;
+}
+.dashTop {
+  width: 100%;
+  height: 50%;
+}
+.dashBottom {
+  width: 100%;
+  height: 50%;
+}
+.dashBLight {
+  background: #ebebf0;
+}
+.dashBDark {
+  background: rgba(40, 44, 59, 0.08);
+}
+.dashTLight {
+  background: var(--light-color);
+}
+.dashTDark {
+  background: rgb(40, 44, 59);
+}
+.divider {
+  height: 0.5rem;
+  width: 30rem;
+  background: rgba(243, 172, 0, 0.7);
+}
+.cardContainer {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: all;
+  transition: all ease 0.6s;
+  width: 26rem;
+  min-width: 26rem;
+
+  height: 18rem;
+  max-width: 90%;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.buttonWrapper {
+  display: none;
+}
+
+.button {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: none;
+  pointer-events: all;
+  cursor: pointer;
+}
+.button.right:hover {
+  background-color: var(--primary-color-transparent);
+}
+.button.left:hover {
+  background-color: darkgrey;
+}
+.button:focus {
+  background-color: lightgrey;
+}
+.button img {
+  max-width: 50%;
+}
+.left {
+  background-color: var(--primary-color);
+}
+.left img {
+  transform: scale(-1);
+}
+.right {
+  background-color: var(--primary-color);
+}
+
+.selectedCard {
+  z-index: 30;
+}
+.front {
+  z-index: 30s;
+}
+
+.backLeft {
+  cursor: pointer;
+  transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
+  z-index: 20;
+}
+.middleLeft {
+  cursor: pointer;
+  transform: translateY(-50%) translate(-24rem, 0rem) scale(0.46);
+  z-index: 29;
+}
+.backRight {
+  cursor: pointer;
+  z-index: 29;
+  transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
+}
+.middleRight {
+  cursor: pointer;
+  transform: translateY(-50%) translate(24rem, 0rem) scale(0.45);
+
+  z-index: 29;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card0Animation {
+    animation: card0Enter 3s 1;
+  }
+  .card1Animation {
+    animation: card1Enter 4s 1;
+  }
+  .card2Animation {
+    animation: card2Enter 5s 1;
+  }
+  .card3Animation {
+    animation: card3Enter 6s 1;
+  }
+  .card4Animation {
+    animation: card4Enter 2s 1;
+  }
+}
+@keyframes card0Enter {
+  0% {
+    transform: translateY(-50%) translate(24rem, 0rem) scale(0.45);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translate(-0.5rem, 0rem) scale(1);
+    opacity: 1;
   }
 
-.carousel{
-    position: relative;
-    height: 40rem;
-    width: 100%;
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
 }
-.cardContainer{
+@keyframes card1Enter {
+  0% {
+    transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
+
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translate(23.5rem, 0rem) scale(0.45);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translate(24rem, 0rem) scale(0.45);
+
+    opacity: 1;
+  }
+}
+@keyframes card2Enter {
+  0% {
+    transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
+
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translate(39.5rem, 0rem) scale(0.45);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
+
+    opacity: 1;
+  }
+}
+@keyframes card3Enter {
+  0% {
+    transform: translateY(-50%) translate(72rem, 0rem) scale(0.45);
+
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translate(55.5rem, 0rem) scale(0.45);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
+
+    opacity: 1;
+  }
+}
+@keyframes card4Enter {
+  0% {
+    transform: translateY(-50%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-50%) translate(-24.5rem, 0rem) scale(0.45);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translate(-24rem, 0rem) scale(0.45);
+    opacity: 1;
+  }
+}
+.beforeAnimation {
+  opacity: 0;
+}
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 700px) {
+  .carousel {
+    position: relative;
+    height: 100vw;
+    width: 100%;
+  }
+  .buttonWrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+  .mobileNo {
+    visibility: hidden;
+  }
+  .dash {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(-50%);
+    z-index: 28;
+    width: 120%;
+    height: 12rem;
+  }
+  .cardContainer {
     position: absolute;
     margin: auto;
     left: 0;
@@ -21,281 +258,115 @@
     top: 50%;
     transform: translateY(-50%);
     pointer-events: all;
-    transition: all ease .6s;
-    width: 25rem;
-    height: 20rem;
-    max-width: 90%;
+    transition: all ease 0.6s;
+    width: 85vw;
+    min-width: 85%;
+    height: 65vw;
+    max-width: 95%;
     box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .divider {
+    height: 0.2rem;
+    width: 80%;
+    background: rgba(243, 172, 0, 0.7);
+  }
 
-}
-.buttonWrapper{
-    display: none;
-}
-
-
-  .button{
-    height:4rem;
-    width: 4rem;
-    border-radius: 50%;
-    margin-right: 1rem;
-    border: none;
-pointer-events: all;
+  .backLeft {
     cursor: pointer;
-  }
-.button.right:hover{
-    background-color: var(--primary-color-transparent);
-}
-.button.left:hover{
-    background-color:darkgrey;
-}
-.button:focus{
-    background-color: green;
-}
-  .button img{
-    max-width: 50%;
-  }
-  .left{
-    background-color: var(--light-grey-color);
-  }
-  .right{
-    background-color: var(--primary-color);
-  }
-
-
-.selectedCard{
-    z-index: 25;
-}
-.front{
-    z-index: 25;
-}
-.backLeft{
-    cursor: pointer;
-    transform: translateY(-50%) translate(-15rem,-12rem) scale(.3) ;
+    transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
     z-index: 20;
-}
-.backRight{
-    cursor: pointer;
-    z-index: 20;
-    transform:translateY(-50%) translate(15rem,-12rem) scale(.3) ;
-}
-.middleLeft{
-    cursor: pointer;
-    transform:translateY(-50%) translate(-20rem,-2rem)scale(.5) ;
-    z-index: 22;
-
-}
-.middleRight{
-    cursor: pointer;
-    transform: translateY(-50%) translate(20rem,-2rem)scale(.5) ;
-    z-index: 22;
-}
-
-
-@media (prefers-reduced-motion: no-preference) {
-    .card0Animation {
-      animation: card0Enter 2s 1;
-    }
-    .card1Animation {
-        animation: card1Enter 2s 1;
-      }
-    .card2Animation {
-        animation: card2Enter 2s 1;
-      }
-  .card3Animation {
-        animation: card3Enter 2s 1;
-      }
-  .card4Animation {
-        animation: card4Enter 2s 1;
-      }
-
   }
+  .middleLeft {
+    cursor: pointer;
+    transform: translateY(-50%) translate(-15rem, 0rem) scale(0.45);
+    z-index: 22;
+  }
+  .backRight {
+    cursor: pointer;
+    z-index: 28;
+    transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
+  }
+  .middleRight {
+    cursor: pointer;
+    transform: translateY(-50%) translate(15rem, 0rem) scale(0.45);
+    z-index: 29;
+  }
+
   @keyframes card0Enter {
     0% {
-        transform:  translateY(-50%) translate(-20rem,-2rem) scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(.5rem,0rem) scale(1);
-        opacity: 1;
-      }
+      transform: translateY(-50%) translate(15rem, 0rem) scale(0.45);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-50%) translate(-0.5rem, 0rem) scale(1);
+      opacity: 1;
+    }
 
-      100% {
-        transform: translateY(-50%) scale(1);
-        opacity: 1;
-      }
+    100% {
+      transform: translateY(-50%) scale(1);
+      opacity: 1;
+    }
   }
   @keyframes card1Enter {
     0% {
-        transform:   translateY(-50%) scale(1);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(20.5rem,-2.1rem)scale(.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) translate(20rem,-2rem)scale(.5);
-        opacity: 1;
-      }
- }
- @keyframes card2Enter {
+      transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
+
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-50%) translate(14.5rem, 0rem) scale(0.45);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) translate(15rem, 0rem) scale(0.45);
+
+      opacity: 1;
+    }
+  }
+  @keyframes card2Enter {
     0% {
-        transform:  translateY(-50%) translate(20rem,-2rem)scale(.5);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%)translate(14.5rem,-12rem) scale(.3);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%)translate(15rem,-12rem) scale(.3);
-        opacity: 1;
-      }
+      transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
+
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-50%) translate(39.5rem, 0rem) scale(0.45);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) translate(40rem, 0rem) scale(0.45);
+
+      opacity: 1;
+    }
   }
   @keyframes card3Enter {
     0% {
-        transform:   translateY(-50%)translate(15rem,-12rem) scale(.3);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(-15.5rem,-12rem)scale(.3);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) translate(-15rem,-12rem)scale(.3);
-        opacity: 1;
-      }
+      transform: translateY(-50%) translate(72rem, 0rem) scale(0.45);
+
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-50%) translate(55.5rem, 0rem) scale(0.45);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) translate(56rem, 0rem) scale(0.45);
+
+      opacity: 1;
+    }
   }
   @keyframes card4Enter {
-
-      0% {
-        transform:  translateY(-50%) translate(-15rem,-12rem)scale(.3);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(-19.5rem,-2.1rem)scale(.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) translate(-20rem,-2rem)scale(.5);
-        opacity: 1;
-      }
-  }  
-  .beforeAnimation{
-    opacity: 0;
-  }
-
-
-
-  /* Tablet and Smaller Desktop */
-@media (max-width: 700px) {
-    .carousel{
-        position: relative;
-        height: 35rem;
-        max-height:70vh;
-        width: 100%;
-    }
-    .buttonWrapper{
-        display: flex;
-        position: relative;
-        width: 100%;
-        justify-content: center;
-        padding-bottom: 2rem;
-        
-    }
-
-    .cardContainer{
-        position: absolute;
-        margin: auto;
-        left: 0;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: all;
-        transition: all ease .6s;
-        width: 80%;
-        height: 20rem;
-        max-width: 90%;
-        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
-    
-    }
-    
-.backLeft{
-    cursor: pointer;
-    transform: translateY(-50%) translate(-10rem,-12rem) scale(.3) ;
-    z-index: 20;
-}
-.backRight{
-    cursor: pointer;
-    z-index: 20;
-    transform:translateY(-50%) translate(10rem,-12rem) scale(.3) ;
-}
-.middleLeft{
-    cursor: pointer;
-    transform:translateY(-50%) translate(-15rem,-2rem)scale(.5) ;
-    z-index: 22;
-
-}
-.middleRight{
-    cursor: pointer;
-    transform: translateY(-50%) translate(15rem,-2rem)scale(.5) ;
-    z-index: 22;
-}
-@keyframes card1Enter {
     0% {
-        transform:   translateY(-50%) scale(1);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(15.5rem,-2.1rem)scale(.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) translate(15rem,-2rem)scale(.5);
-        opacity: 1;
-      }
- }
- @keyframes card2Enter {
-    0% {
-        transform:  translateY(-50%) translate(15rem,-2rem)scale(.5);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%)translate(10.5rem,-12rem) scale(.3);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%)translate(10rem,-12rem) scale(.3);
-        opacity: 1;
-      }
+      transform: translateY(-50%) scale(0.45);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-50%) translate(-14.5rem, 0rem) scale(0.45);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) translate(-15rem, 0rem) scale(0.45);
+      opacity: 1;
+    }
   }
-  @keyframes card3Enter {
-    0% {
-        transform:   translateY(-50%)translate(10rem,-12rem) scale(.3);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(-10.5rem,-12rem)scale(.3);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) translate(-10rem,-12rem)scale(.3);
-        opacity: 1;
-      }
-  }
-  @keyframes card4Enter {
-
-      0% {
-        transform:  translateY(-50%) translate(-10rem,-12rem)scale(.3);
-        opacity: 0;
-      }
-      50% {
-        transform: translateY(-50%) translate(-15.5rem,-2.1rem)scale(.5);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-50%) translate(-15rem,-2rem)scale(.5);
-        opacity: 1;
-      }
-  }  
 }

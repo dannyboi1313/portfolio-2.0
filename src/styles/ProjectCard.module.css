@@ -1,186 +1,368 @@
-.cardContainer{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    position: relative;
-    overflow-x: hidden;
-    background-color: var(--light-color);
-    overflow-y: hidden;
+.cardContainer {
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+  transition: all ease 0.5;
+  color: #455365;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.cardSelected {
+  border-radius: 1rem;
 
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    transition: all ease .5;
-    color: #455365;
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
 
+  transition: all ease 0.5;
+  color: #455365;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
 
+.cardSelected h3 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.cardContainer h3 {
+  font-size: 14px;
 
+  color: white;
+  text-transform: uppercase;
+}
+
+.cardContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.cardWords {
+  padding-left: 1rem;
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.cardWords h1 {
+  font-size: 16px;
+}
+.cardWords h2 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.cardWords h3 {
+  font-size: 10px;
+  color: #455365;
+}
+
+.thumbnailWrapper {
+  width: 60%;
+  height: 100%;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+.thumbnail {
+  position: absolute;
+  bottom: -40%;
+  left: 45%;
+  height: 110%;
+  display: flex;
+  justify-content: flex-start;
+  .image {
+    object-fit: contain;
+    width: unset !important;
+    position: relative !important;
+    height: 100% !important;
   }
-  .cardSelected{
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: hidden;
+}
 
-    justify-content: flex-end;
-    align-items: center;
-    background-color: var(--light-color);
-    transition: all ease .5;
-    color: #455365;
-
-
-  }
-  
-  .cardSelected h3{
-    color: white;
-    text-transform: uppercase;
-    font-size: 14px;
-
-  }
-  .cardContainer h3{
-    font-size: 14px;
-
-    color: white;
-    text-transform: uppercase;
-
-  }
-  .accent img{
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 5rem;
-    transform: rotateZ(-45deg);
-    
-  }
-.title{
+.accent img {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 5rem;
+  transform: rotateZ(-45deg);
+}
+.title {
+}
+.types {
+  padding-top: 0.5rem;
+  letter-spacing: 0.1rem;
+  visibility: hidden;
+}
+.description {
+  height: 5.9rem;
+  transition: height ease 6s;
+  cursor: pointer;
+  visibility: hidden;
+}
+.ps-1 {
   padding-left: 1rem;
   padding-right: 1rem;
-  }
-  .ps-1{
+}
+
+/* .cardContainer .overlay {
+  position: absolute;
+  color: white;
+  text-align: left;
+  top: 0;
+  background: rgba(40, 44, 59, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 4;
+  transition: all ease 1s;
+  cursor: pointer;
+  min-width: 0%;
+  font-size: 0px;
+  width: 0;
+  height: 100%;
+  border-radius: 1rem 1rem 1rem 1rem;
+  transform: translate(-65%, -85%);
+} */
+.overlayShow {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  right: 0;
+  left: 0;
+}
+
+.overlay {
+  position: absolute;
+  color: white;
+  text-align: left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(40, 44, 59, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  z-index: 3;
+  -moz-transition: top 1s, right 1s, bottom 1s, left 1s;
+  -webkit-transition: top 1s, right 1s, bottom 1s, left 1s;
+  transition: top 1s, right 1s, bottom 1s, left 1s;
+
+  cursor: pointer;
+  min-width: 0%;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+.cardContainer .overlay {
+  position: absolute;
+  color: white;
+  text-align: left;
+  right: 200%;
+  left: -60%;
+  top: -85%;
+  bottom: 0;
+  background: rgba(40, 44, 59, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 4;
+  transition: all ease 1s;
+  cursor: pointer;
+  min-width: 0%;
+  font-size: 0px;
+  width: 0;
+  height: 100%;
+  border-radius: 1rem;
+}
+.cardContainer .overlay .overlayContent {
+  visibility: hidden;
+}
+.overlayWrapper {
+  height: 100%;
+  width: 100%;
+}
+.overlayNoShow {
+  right: 200%;
+  left: -60%;
+  top: -85%;
+}
+
+.learnMore {
+  position: absolute;
+  font-size: 14px;
+  bottom: 0.5rem;
+  right: 2rem;
+}
+.overlayShow .types {
+  visibility: visible;
+}
+.overlayShow .title {
+  visibility: visible;
+}
+.overlayShow .description {
+  visibility: visible;
+  height: 6rem;
+  transition: height ease 6s;
+  cursor: pointer;
+}
+.marginLeft {
+  margin-left: 1rem;
+}
+.hide {
+  visibility: collapse;
+}
+.show {
+  visibility: visible;
+}
+
+.overlayContentWrapper {
+  width: 100%;
+  background-color: aqua;
+}
+.overlayContent {
+  max-width: 100%;
+  height: 100%;
+  padding: 1rem 2rem;
+}
+
+.embellishment {
+  width: 100%;
+  z-index: 0;
+}
+.embellishment img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+}
+
+.overlayContent h2 {
+  font-size: var(--font-large);
+  letter-spacing: 0.05rem;
+}
+.overlayContent p {
+  font-size: 16px;
+  letter-spacing: 0.05rem;
+}
+
+.cardSelected .tagWrapper {
+  position: absolute;
+  z-index: 2;
+  transition: all ease 0.3s;
+  visibility: visible;
+  max-height: 10rem;
+  bottom: 0rem;
+  white-space: normal;
+  flex-wrap: wrap;
+
+  left: 0.5rem;
+  width: 100%;
+  display: flex;
+  transition: all ease 1s;
+}
+.cardContainer .tagWrapper {
+  position: absolute;
+  z-index: 2;
+
+  transition: all ease 0.3s;
+  visibility: visible;
+  max-height: 10rem;
+  bottom: 0rem;
+  white-space: normal;
+  flex-wrap: wrap;
+  transform: translateY(100%);
+  left: 0.5rem;
+  width: 100%;
+  display: flex;
+  transition: all ease 1s;
+}
+
+.tag {
+  z-index: 2;
+  width: max-content;
+  visibility: visible;
+  transition: all ease 1s;
+
+  padding: 0.1rem 0.75rem;
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: lighter;
+  font-size: 16px;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 700px) {
+  .cardWords {
     padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .cardSelected .description{
-    transition: height ease .6s;
-    visibility: visible;
-    z-index: 1;
-    height: 3rem;
-
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .overlay{
-    position: absolute;
-    color: white;
-    text-align: left;
-    width: 200%;
-    bottom: 0;
-    left: -50%;
-    margin: auto;
-    background-color: rgba(65,158,173,.7);
-    backdrop-filter: blur(5px);
-    border-radius: 50% 50% 0rem 0rem;
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-  }
-  .overlayContentWrapper{
-    width: 25rem;
-
-  }
-  .overlayContent{
-    padding-top: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    
-    
-  }
-  .types{
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: .5rem;
-  }
-  .embellishment{
-    width: 100%;
-    z-index: 0;
-  }
-  .embellishment img{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    max-width: 100%;
-  }
-  .cardContainer .description{
-    visibility: collapse;
-    height: 0rem;
-    transition: height ease .6s;
-
-
-  }
-  .cardSelected h2{
-    font-size: 24px;
-  }
-  .cardContainer h2{
-    font-size: 24px;
-  }
-  .thumbnail{
-    width: 100%;
+    width: 40%;
     height: 100%;
-    justify-self: flex-end;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    z-index: 1;
+    text-align: left;
+  }
 
+  .cardWords h1 {
+    font-size: var(--font-small);
   }
-  .thumbnail img{
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-    justify-self: flex-end;
+  .cardWords h2 {
+    font-size: var(--font-xsmall);
   }
-  .cardSelected .tagWrapper{
+  .cardWords h3 {
+    font-size: 8px;
+  }
+  .learnMore {
     position: absolute;
-    transition: all ease .3s;
-    visibility: visible;
-    max-height: 10rem;
-    top: 1rem;
-    left: 0;
-    width: 100%;
-    display: flex;
+    font-size: 12px;
+    bottom: 0.5rem;
+    right: 1rem;
   }
-  .cardContainer .tagWrapper{
+  .thumbnail {
     position: absolute;
-    top: 1rem;
-    left: 0;
-    transition: all ease .3s;
-    
-    visibility: collapse;
-    max-height: 0rem;
-    width: 100%;
+    bottom: -40%;
+    left: 45%;
+    height: 110%;
     display: flex;
-
+    justify-content: flex-start;
+    .image {
+      object-fit: contain;
+      width: unset !important;
+      position: relative !important;
+      height: 100% !important;
+    }
   }
-   .tag{
+  .overlayContent h2 {
+    font-size: var(--font-small);
+    letter-spacing: 0.05rem;
+  }
+  .overlayContent p {
+    font-size: 10px;
+    letter-spacing: 0.05rem;
+  }
+  .tag {
     z-index: 2;
     width: max-content;
-    padding: 0rem .2rem;
-    background-color:#455365;
-    color:white;
+    visibility: visible;
+    transition: all ease 1s;
+
+    padding: 0.1rem 0.75rem;
+    background-color: var(--secondary-color);
+    color: white;
     font-weight: lighter;
-    font-size: 24px;
-    text-transform: uppercase;
-    margin-left: 1rem;
-    box-shadow:  2px 2px 8px #bebebe,
-    -2px -2px 8px #ffffff;
+    font-size: 12px;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
   }
-
-
-
+}

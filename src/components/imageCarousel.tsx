@@ -55,7 +55,11 @@ const ImageCarousel: React.FC<AboutCardProps> = ({
     }
   };
   return (
-    <div className={`${styles.imageCarousel} "`}>
+    <div
+      className={`${styles.imageCarousel} ${
+        darkMode ? styles.bgSecondaryDark : styles.bgSecondary
+      } "`}
+    >
       <div className="w-100 h-100p relative">
         <div className={styles.buttonOverlay}>
           <button
@@ -77,9 +81,10 @@ const ImageCarousel: React.FC<AboutCardProps> = ({
         </div>
 
         <div className={`${styles.imageCarouselItems} ${getPositionClass()}`}>
-          {images.map((image) => {
+          {images.map((image, index) => {
             return (
               <div
+                key={index}
                 className={`${
                   mobile ? styles.imageWrapperMobile : styles.imageWrapper
                 } ${styles.marginLeft} ${styles.max100}`}

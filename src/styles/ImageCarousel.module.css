@@ -1,245 +1,248 @@
-.imageCarousel{
-    position: relative;
-    overflow-x: hidden;
-    width: 100%;
-    height: 20rem;
-    background-color: #F5F5F5;
-  }
-  .imageCarouselItems{
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    transition: all ease 1s;
-    overflow-x: hidden;
-    height: 20rem;
-    width: fit-content;
-  }
-  .imageCarouselItems.unwrap{
-    flex-wrap: nowrap;
-  }
+.imageCarousel {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 20rem;
+}
+.bgSecondary {
+  background-color: #f5f5f5;
+}
+.bgSecondaryDark {
+  background-color: rgba(245, 245, 245, 1);
+}
+.imageCarouselItems {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  transition: all ease 1s;
+  overflow-x: hidden;
+  height: 20rem;
+  width: fit-content;
+}
+.imageCarouselItems.unwrap {
+  flex-wrap: nowrap;
+}
 
+.buttonOverlay {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 2000;
+}
+.imageCarouselButton {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-left: 1rem;
 
-  .buttonOverlay{
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color ease 0.3s;
+}
+.imageCarouselButton:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.imageCarouselButton img {
+  max-width: 50%;
+}
+.left {
+  background-color: rgba(0, 0, 0, 0.4);
+  transform: scaleX(-1);
+}
+.imageWrapper {
+  white-space: normal;
+  transition: all ease 2s;
+  height: 100%;
+  width: 30rem;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imageWrapperMobile {
+  white-space: normal;
+  transition: all ease 2s;
+  height: 100%;
+  width: 15rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carouselImage {
+  background-position: center;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  > .carouselImage div {
+    position: unset !important;
+  }
+  .image {
+    object-fit: contain;
+    width: unset !important;
+    max-width: 30rem;
+    position: relative !important;
+    height: 100% !important;
+  }
+  .imageMobile {
+    object-fit: contain;
+    width: unset !important;
+    max-width: 15rem;
+    position: relative !important;
+    height: 100% !important;
+  }
+}
+.cImage {
+}
+.marginLeft {
+  margin-left: 2.5rem;
+}
+.position1 {
+  transform: translateX(-32.5rem);
+}
+.position2 {
+  transform: translateX(-65rem);
+}
+.position3 {
+  transform: translateX(-97.5rem);
+}
+.position4 {
+  transform: translateX(-130rem);
+}
+.position5 {
+  transform: translateX(-162.5rem);
+}
+.position6 {
+  transform: translateX(-195rem);
+}
+.position7 {
+  transform: translateX(-227.5rem);
+}
+.position8 {
+  transform: translateX(-260rem);
+}
+.position1Mobile {
+  transform: translateX(-17.5rem);
+}
+.position2Mobile {
+  transform: translateX(-35rem);
+}
+.position3Mobile {
+  transform: translateX(-52.5rem);
+}
+.position4Mobile {
+  transform: translateX(-70rem);
+}
+.position5Mobile {
+  transform: translateX(-87.5rem);
+}
+.position6Mobile {
+  transform: translateX(-105rem);
+}
+.position7Mobile {
+  transform: translateX(-122.5rem);
+}
+.position8Mobile {
+  transform: translateX(-140rem);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .buttonOverlay {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: space-between;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     position: absolute;
     z-index: 2000;
   }
-  .imageCarouselButton{
-    height:4rem;
-    width: 4rem;
-    border-radius: 50%;
-    margin-right: 1rem;
-    border: none;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, .4);
-    transition: background-color ease .3s;
+  .imageCarouselItems {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    transition: all ease 1s;
 
+    overflow-x: hidden;
   }
-  .imageCarouselButton:hover{
-    background-color:rgba(0, 0, 0, .6); ;
+  .imageCarouselItems.unwrap {
+    flex-wrap: nowrap;
   }
-  .imageCarouselButton img{
-    max-width: 50%;
-  }
-  .left{
-    background-color: rgba(0, 0, 0, .4);
-    transform: scaleX(-1);
 
+  .marginLeft {
+    margin-left: 0rem;
+    margin-right: 0rem;
   }
-  .imageWrapper{
+  .imageWrapper,
+  .imageWrapperMobile {
     white-space: normal;
     transition: all ease 2s;
     height: 100%;
-    width: 30rem;
-
+    width: 93.5vw;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .imageWrapperMobile{
-    white-space: normal;
-    transition: all ease 2s;
-    height: 100%;
-    width: 15rem;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-  .carouselImage{
-    background-position: center;
+  .carouselImage {
     height: 95%;
     display: flex;
     justify-content: center;
-    
 
-    > .carouselImage div {
-      position: unset !important;
-    }
     .image {
-        object-fit: contain;
-        width: unset !important;
-        max-width: 30rem;
-        position: relative !important;
-        height: 100% !important;
-      }
-      .imageMobile {
-        object-fit: contain;
-        width: unset !important;
-        max-width: 15rem;
-        position: relative !important;
-        height: 100% !important;
-      }
-    
+      object-fit: contain;
+      width: unset !important;
+      max-width: 90vw;
+      position: relative !important;
+      height: 100% !important;
+    }
+    .imageMobile {
+      object-fit: contain;
+      width: unset !important;
+      max-width: 90vw;
+      position: relative !important;
+      height: 100% !important;
+    }
   }
-  .cImage{
-    
+  .position1,
+  .position1Mobile {
+    transform: translateX(-93.5vw);
   }
-  .marginLeft{
-    margin-left: 2.5rem;
+  .position2,
+  .position2Mobile {
+    transform: translateX(-187vw);
   }
-  .position1{
-    transform: translateX(-32.5rem);
+  .position3,
+  .position3Mobile {
+    transform: translateX(-280.5vw);
   }
-  .position2{
-    transform: translateX(-65rem);
+  .position4,
+  .position4Mobile {
+    transform: translateX(-374vw);
   }
-  .position3{
-    transform: translateX(-97.5rem);
+  .position5,
+  .position5Mobile {
+    transform: translateX(-467.5vw);
   }
-  .position4{
-    transform: translateX(-130rem);
+  .position6,
+  .position6Mobile {
+    transform: translateX(-561vw);
   }
-  .position5{
-    transform: translateX(-162.5rem);
+  .position7,
+  .position7Mobile {
+    transform: translateX(-654.5vw);
   }
-  .position6{
-    transform: translateX(-195rem);
+  .position8,
+  .position8Mobile {
+    transform: translateX(-748vw);
   }
-  .position7{
-    transform: translateX(-227.5rem);
-  }
-  .position8{
-    transform: translateX(-260rem);
-  }
-  .position1Mobile{
-    transform: translateX(-17.5rem);
-  }
-  .position2Mobile{
-    transform: translateX(-35rem);
-  }
-  .position3Mobile{
-    transform: translateX(-52.5rem);
-  }
-  .position4Mobile{
-    transform: translateX(-70rem);
-  }
-  .position5Mobile{
-    transform: translateX(-87.5rem);
-  }
-  .position6Mobile{
-    transform: translateX(-105rem);
-  }
-  .position7Mobile{
-    transform: translateX(-122.5rem);
-  }
-  .position8Mobile{
-    transform: translateX(-140rem);
-  }
-
-/* Mobile */
-@media (max-width: 700px) {
-    .buttonOverlay{
-        display: flex;
-        width: 100%;
-        height: 100%;
-        justify-content: space-between;
-        display: flex;
-        align-items: flex-end;
-        position: absolute;
-        z-index: 2000;
-      }
-      .imageCarouselItems{
-        position: relative;
-        display: flex;
-        flex-wrap: nowrap;
-        transition: all ease 1s;
-
-        overflow-x: hidden;
-      }
-      .imageCarouselItems.unwrap{
-        flex-wrap: nowrap;
-      }
-
-      .marginLeft{
-        margin-left: 0rem;
-        margin-right: 0rem;
-      }
-      .imageWrapper,.imageWrapperMobile{
-        white-space: normal;
-        transition: all ease 2s;
-        height: 100%;
-        width: 93.5vw;
-        overflow: hidden;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .carouselImage{
-        height: 95%;
-        display: flex;
-        justify-content: center;
-        
-        .image{
-            object-fit: contain;
-            width: unset !important;
-            max-width: 90vw;
-            position: relative !important;
-            height: 100% !important;
-          }
-        .imageMobile{
-            object-fit: contain;
-            width: unset !important;
-            max-width: 90vw;
-            position: relative !important;
-            height: 100% !important;
-          }
-      }
-      .position1,.position1Mobile{
-        transform: translateX(-93.5vw);
-      }
-      .position2,.position2Mobile{
-        transform: translateX(-187vw);
-      }
-      .position3,.position3Mobile{
-        transform: translateX(-280.5vw);
-
-      }
-      .position4,.position4Mobile{
-        transform: translateX(-374vw);
-
-      }
-      .position5,.position5Mobile{
-        transform: translateX(-467.5vw );
-
-      }
-      .position6,.position6Mobile{
-        transform: translateX(-561vw );
-
-      }
-      .position7,.position7Mobile{
-        transform: translateX(-654.5vw );
-
-      }
-      .position8,.position8Mobile{
-        transform: translateX(-748vw );
-
-      }
-
-  }
+}
