@@ -193,16 +193,15 @@
     margin-right: auto;
   }
   .carouselImage {
-    height: 95%;
+    width: 100%;
     display: flex;
     justify-content: center;
 
     .image {
       object-fit: contain;
-      width: unset !important;
-      max-width: 90vw;
+      width: 90% !important;
       position: relative !important;
-      height: 100% !important;
+      height: unset !important;
     }
     .imageMobile {
       object-fit: contain;
