@@ -166,6 +166,7 @@ h4 {
   list-style: none;
   display: flex;
   gap: 1rem;
+  margin-right: 2rem;
 }
 
 .navLinks li a {
@@ -315,6 +316,8 @@ h4 {
 }
 .resume-button {
   margin-top: 1rem;
+  margin-bottom: 2rem;
+
   background-color: transparent;
   border: none;
   color: var(--secondary-color);
@@ -323,6 +326,7 @@ h4 {
   transition: all ease 1s;
   align-items: center;
   width: 12rem;
+  z-index: 0;
 }
 .resume-button p {
   transition: all ease 1s;
@@ -586,7 +590,7 @@ h4 {
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  z-index: 100;
+  z-index: 10000;
   width: 22rem;
   max-height: none;
   cursor: pointer;
@@ -1184,6 +1188,20 @@ h4 {
   justify-content: center;
   text-align: left;
 }
+.side-col-p {
+  position: unset;
+  max-width: 25rem;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-start;
+
+  text-align: left;
+}
 .side-col-content {
   margin-top: 4rem;
   width: 18rem;
@@ -1192,9 +1210,7 @@ h4 {
   display: none;
 }
 .side-col-content-p {
-  position: absolute;
-  top: 0;
-  width: 18rem;
+  height: inherit;
 }
 .canvas-wrapper {
   position: "absolute";
@@ -1429,8 +1445,10 @@ h4 {
     flex-direction: column;
   }
   .landing-page {
-    height: auto;
+    height: min-content;
     width: min-content;
+    min-height: unset;
+    max-height: 50rem;
   }
   .landing-image {
     display: none;
@@ -1497,14 +1515,14 @@ h4 {
     width: 100%;
     padding: 0;
     max-width: 100%;
-    height: 8rem;
     z-index: 1;
     margin-left: 0;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: left;
-    margin-bottom: 0rem;
+    margin-bottom: 2rem;
   }
   .mobileOnly {
     display: inline;
@@ -1534,9 +1552,10 @@ h4 {
     align-items: center;
   }
   .experience-background {
-    width: 80%;
+    width: 90%;
+    max-height: 20rem;
     left: 0;
-    bottom: -2rem;
+    bottom: -15%;
 
     background-color: var(--bg-backgrounds);
     box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
@@ -1614,6 +1633,7 @@ h4 {
     justify-content: center;
     margin-top: 2rem;
     margin-left: 1.5rem;
+    z-index: 2000;
   }
 
   .job-card {
@@ -1624,7 +1644,7 @@ h4 {
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-    z-index: 2;
+    z-index: 1000;
     width: 4rem;
     height: 4rem;
     cursor: pointer;

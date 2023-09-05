@@ -104,7 +104,7 @@ const Modal: React.FC<ModalProps> = ({
             <div className={styles.modalFooter}>
               <div className={styles.links}>
                 {project.repo != "" ? (
-                  <a className="resume-button flex-row">
+                  <a className="resume-button flex-row" href={project.repo}>
                     <p>Repo</p>
                     <div className="button-arrow">&#x2192;</div>
                   </a>
@@ -112,7 +112,7 @@ const Modal: React.FC<ModalProps> = ({
                   ""
                 )}
                 {project.link != "" ? (
-                  <a className="resume-button flex-row">
+                  <a className="resume-button flex-row" href={project.link}>
                     <p>Site</p>
                     <div className="button-arrow">&#x2192;</div>
                   </a>

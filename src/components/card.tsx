@@ -58,6 +58,7 @@ const Card: React.FC<CardProps> = ({ project, selected, darkMode }) => {
             <Image
               src={project.thumbnail}
               alt="a"
+              loading="eager"
               fill={true}
               className={styles.image}
             />

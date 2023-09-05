@@ -226,7 +226,7 @@ export default function Home() {
           </a>
         </nav>
         <div className="main-content">
-          <div className="w-100 landing-wrapper  ">
+          <div className="w-100 landing-wrapper">
             <div className="landing-image-mobile relative">
               <div className="accent-marks-mobile landing-spacing flex-row items-center ">
                 <div className="ml-2 filter-1">
@@ -281,7 +281,7 @@ export default function Home() {
                 />
               )}
             </div>
-            <div id="landing" className="landing-page">
+            <div id="landing" className="landing-page ">
               <div className="landing-banner">
                 <div className="accent-marks landing-spacing flex-row items-center ">
                   <div className="filter-1">
@@ -477,7 +477,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="side-col">
+            <div className="side-col-p">
               <div className="side-col-content-p">
                 <h3>Projects</h3>
                 <h4 className="left-text">A few of my favorite projects</h4>
@@ -630,20 +630,20 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="side-col">
+              <div className="side-col ">
                 <div className="side-col-content">
                   <h3>Experience</h3>
-                  <h4>Some of my Prior experience</h4>
+                  <h4>Some of my prior experience</h4>
                   <p>And the skills I have developed along the way</p>
+                  <a
+                    href="/danielblanchardresume-9-23.pdf"
+                    target="_blank"
+                    className="resume-button flex-row"
+                  >
+                    <p>View Full Resume</p>
+                    <div className="button-arrow">&#x2192;</div>
+                  </a>
                 </div>
-                <a
-                  href="/danielblanchardresume-9-23.pdf"
-                  target="_blank"
-                  className="resume-button flex-row"
-                >
-                  <p>View Full Resume</p>
-                  <div className="button-arrow">&#x2192;</div>
-                </a>
               </div>
             </div>
           </div>
