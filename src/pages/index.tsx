@@ -768,18 +768,28 @@ export default function Home() {
                         </div>
 
                         <div className="flex-row card-icons">
-                          <Image
-                            src={"../small-icons/git-icon.svg"}
-                            height={40}
-                            width={40}
-                            alt="icon"
-                          />
-                          <Image
-                            src={"../small-icons/linked-icon.svg"}
-                            height={40}
-                            width={40}
-                            alt="icon"
-                          />
+                          <a
+                            href="https://www.github.com/dannyboi1313"
+                            target="_blank"
+                          >
+                            <Image
+                              src={"../small-icons/git-icon.svg"}
+                              height={40}
+                              width={40}
+                              alt="icon"
+                            />
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/danielblanchard97/"
+                            target="_blank"
+                          >
+                            <Image
+                              src={"../small-icons/linked-icon.svg"}
+                              height={40}
+                              width={40}
+                              alt="icon"
+                            />
+                          </a>
                         </div>
                         <div className="contact-accent"></div>
                       </div>
